@@ -19,11 +19,7 @@ PROGS= \
 	e01-17_longerline \
 	e01-18_rmblanks \
 	e01-19_reverse \
-	e01-20_detab \
-	e01_countarray \
-	e01_countchar \
-	e01_countline \
-	e01_filecp
+	e01-20_detab
 
 all: $(PROGS)
 
