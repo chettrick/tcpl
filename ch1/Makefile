@@ -2,8 +2,7 @@
 
 PROGS= \
 	e01-01_hello \
-	e01-03_f2c-1 \
-	e01-03_f2c-2 \
+	e01-03_f2c \
 	e01-04_c2f \
 	e01-06_0or1 \
 	e01-07_EOFvalue \
