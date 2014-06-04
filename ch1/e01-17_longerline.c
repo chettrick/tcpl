@@ -5,28 +5,30 @@
 
 #include <stdio.h>
 
-#define MAXLINE 1000000	/* Max input line size. */
-#define MINLEN	81	/* Min line size to be printed. */
+#define MAXLINE 10000		/* Max input line size. */
+#define MINLEN	(80 + 1)	/* Min line size to be printed. */
 
 int	getaline(char *, int);
 
 /* Print all input lines that are longer than MINLEN characters. */
 int
-main()
+main(void)
 {
 	int	len;			/* Current line length. */
 	char	line[MAXLINE];		/* Current input line. */
 
-	while ((len = getaline(line, MAXLINE)) > 0)
+	while ((len = getaline(line, MAXLINE)) > 0) {
+		/* Don't consider NULL to be one of the characters. */
 		if (len > MINLEN)
 			printf("%s", line);
+	}
 
 	return 0;
 }
 
 /* getaline:  read a line into `s'; return length. */
 int
-getaline(char s[], int lim)
+getaline(char *s, int lim)
 {
 	int c, i;
 

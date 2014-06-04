@@ -1,6 +1,5 @@
 /*
  * detab: Replace tabs with blanks.
- * 2013-11-04
  */
 
 #include <stdio.h>
@@ -13,7 +12,7 @@ void	detab(char *);
 
 /* detab:  Replace tabs with blanks. */
 int
-main()
+main(void)
 {
 	char	line[MAXLINE];	/* Current input line. */
 
@@ -27,7 +26,8 @@ main()
 
 /* getaline:  Read a line into `s'; return length. */
 int
-getaline(char s[], int lim) {
+getaline(char *s, int lim)
+{
 	int c, i;
 
 	for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
@@ -41,14 +41,15 @@ getaline(char s[], int lim) {
 
 /* detab:  Replace tabs with blanks. */
 void
-detab(char s[])
+detab(char *s)
 {
 	int i, j;
 
-	for (i = 0; s[i] != '\0'; ++i)
+	for (i = 0; s[i] != '\0'; ++i) {
 		if (s[i] == '\t') {
 			for (j = 0; j <= (i % TABSTOP + TABSTOP); ++j)
 				s[i + j] = ' ';
 			i += j;
 		}
+	}
 }

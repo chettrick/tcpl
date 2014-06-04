@@ -1,18 +1,17 @@
 /*
  * Reverse the characters in each line.
- * 2013-11-03
  */
 
 #include <stdio.h>
 
-#define MAXLINE 10000	/* Max input line length. */
+#define MAXLINE 10000		/* Max input line length. */
 
 int	getaline(char *, int);
 void	reverse(char *, int);
 
 /* Reverse the characters in each line. */
 int
-main()
+main(void)
 {
 	int	len;		/* Current line length. */
 	char	line[MAXLINE];	/* Current input line. */
@@ -27,7 +26,7 @@ main()
 
 /* getaline:  read a line into `s'; return length. */
 int
-getaline(char s[], int lim)
+getaline(char *s, int lim)
 {
 	int c, i;
 
@@ -42,23 +41,22 @@ getaline(char s[], int lim)
 
 /* reverse:  Reverse the character string order. */
 void
-reverse(char s[], int len)
+reverse(char *s, int len)
 {
-	int i, j, nl;
+	int i, j, newline;
 	char temp[MAXLINE];
 
-	nl = 0;
-	--len;	/* Skip \0. */
+	newline = 0;
+	--len;			/* Skip \0. */
 	if (s[len] == '\n') {
-		nl = 1;
-		--len;	/* Skip \0 and \n. */
+		newline = 1;
+		--len;		/* Skip \n as well. */
 	}
-	j = 0;
-	for (i = len; i >= 0; temp[j++] = s[i--])
+	for (j = 0, i = len; i >= 0; temp[j++] = s[i--])
 		;
 	for (i = 0; i <= len; s[i] = temp[i++])
 		;
-	if (nl)
+	if (newline)
 		s[++len] = '\n';
 	s[++len] = '\0';
 }

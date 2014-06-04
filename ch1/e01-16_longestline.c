@@ -1,18 +1,17 @@
 /*
  * Print the longest input line.
- * 2013-10-27
  */
 
 #include <stdio.h>
 
-#define MAXLINE 1000000	/* Max input line size. */
+#define MAXLINE 10000	/* Max input line size. */
 
 int	getaline(char *, int);
 void	copyaline(char *, char *);
 
 /* Print longest input line. */
 int
-main()
+main(void)
 {
 	int	len;			/* Current line length. */
 	int	max;			/* Maximum length seen so far. */
@@ -20,21 +19,25 @@ main()
 	char	longest[MAXLINE];	/* Longest line saved here. */
 
 	max = 0;
-	while ((len = getaline(line, MAXLINE)) > 0)
+
+	while ((len = getaline(line, MAXLINE)) > 0) {
 		if (len > max) {
 			max = len;
 			copyaline(longest, line);
 		}
-	if (max > 0)	/* There was a line. */
+	}
+	/* There was a line. */
+	if (max > 0) {
 		printf("The longest line has %d characters.\n", max);
 		printf("%s", longest);
+	}
 
 	return 0;
 }
 
 /* getaline:  read a line into `s'; return length. */
 int
-getaline(char s[], int lim)
+getaline(char *s, int lim)
 {
 	int c, i;
 
@@ -51,7 +54,7 @@ getaline(char s[], int lim)
 
 /* copyaline:  copy `from' into `to'; assume `to' is big enough. */
 void
-copyaline(char to[], char from[])
+copyaline(char *to, char *from)
 {
 	int i;
 
