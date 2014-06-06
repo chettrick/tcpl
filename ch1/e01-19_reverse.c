@@ -30,6 +30,8 @@ getaline(char *s, int lim)
 {
 	int c, i;
 
+	c = 0;
+
 	for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
 		s[i] = c;
 	if (c == '\n')
@@ -52,10 +54,13 @@ reverse(char *s, int len)
 		newline = 1;
 		--len;		/* Skip \n as well. */
 	}
-	for (j = 0, i = len; i >= 0; temp[j++] = s[i--])
-		;
-	for (i = 0; i <= len; s[i] = temp[i++])
-		;
+	j = 0;
+	for (i = len; i >= 0; i--) {
+		temp[j] = s[i];
+		j++;
+	}
+	for (i = 0; i <= len; i++)
+		s[i] = temp[i];
 	if (newline)
 		s[++len] = '\n';
 	s[++len] = '\0';

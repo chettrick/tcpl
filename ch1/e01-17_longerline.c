@@ -32,6 +32,8 @@ getaline(char *s, int lim)
 {
 	int c, i;
 
+	c = 0;
+
 	for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
 		s[i] = c;
 	if (c == '\n') {
