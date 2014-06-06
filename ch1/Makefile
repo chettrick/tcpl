@@ -1,5 +1,7 @@
 .OBJDIR= ${.CURDIR}/obj
 
+CFLAGS+= -g -Wall
+
 PROGS= \
 	e01-01_hello \
 	e01-03_f2c \
