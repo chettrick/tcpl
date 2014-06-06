@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-int tempconv(int, int, int);
+void tempconv(int, int, int);
 
 int
 main()
@@ -21,7 +21,7 @@ main()
 	return 0;
 }
 
-int
+void
 tempconv(int lower, int upper, int step)
 {
 	float fahr, celsuis;
