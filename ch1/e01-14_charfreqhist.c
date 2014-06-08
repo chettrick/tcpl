@@ -1,13 +1,11 @@
 /*
  * Character Frequency Histogram
- * Exercise 1-14
- * 2013-09-06
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	int ch, i, j; 
 	int charfreq[128];	/* A count of each ASCII character. */

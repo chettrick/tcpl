@@ -1,7 +1,5 @@
 /*
  * Word Length Histogram Vertical
- * Exercise 1-13
- * 2013-09-01
  */
 
 #include <stdio.h>
@@ -11,7 +9,7 @@
 #define MAXTERMWIDTH	75	/* Maximum terminal width */
 
 int
-main()
+main(void)
 {
 	int ch, prevstate, state; 
 	int i, j, wordlen, maxwordlen, maxwordfreq;

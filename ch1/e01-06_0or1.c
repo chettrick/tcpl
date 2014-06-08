@@ -1,12 +1,11 @@
 /*
  * Verify that `getchar() != EOF' is 0 or 1.
- * 2013-10-27
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	int c;
 

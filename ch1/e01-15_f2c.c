@@ -1,6 +1,5 @@
 /*
  * Print Fahrenheit to Celsuis table using a function call.
- * 2013-10-27
  */
 
 #include <stdio.h>
@@ -8,7 +7,7 @@
 void tempconv(int, int, int);
 
 int
-main()
+main(void)
 {
 	int lower, upper, step;
 

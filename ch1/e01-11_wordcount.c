@@ -1,6 +1,5 @@
 /*
  * Word Count
- * 2013-05-28
  */
 
 #include <stdio.h>
@@ -9,7 +8,7 @@
 #define	OUT	0
 
 int
-main()
+main(void)
 {
 	int ch, nl, nw, nc, state;
 

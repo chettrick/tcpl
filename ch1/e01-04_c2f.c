@@ -1,12 +1,11 @@
 /*
  * Print Celsuis to Fahrenheit table
- * 2013-05-27
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	float celsuis, fahr;
 	int lower, upper, step;

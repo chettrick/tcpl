@@ -1,6 +1,5 @@
 /*
  * One Length Histogram
- * 2013-05-29
  */
 
 #include <stdio.h>
@@ -9,7 +8,7 @@
 #define	OUT	0	/* Outside a word */
 
 int
-main()
+main(void)
 {
 	int c, prevstate, state; 
 

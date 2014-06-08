@@ -1,12 +1,11 @@
 /*
  * Print the value of EOF.
- * 2013-10-27
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	printf("%c, %d, %x\n", EOF, EOF, EOF);
 

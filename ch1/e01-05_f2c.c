@@ -9,7 +9,7 @@
 #define	STEP	20	/* Step size of table */
 
 int
-main()
+main(void)
 {
 	int fahr;
 

@@ -1,12 +1,11 @@
 /*
  * Count Blanks, Tabs and New Lines
- * 2013-05-28
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	int ch;
 	int blanks, tabs, newlines;

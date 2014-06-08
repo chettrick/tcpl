@@ -1,6 +1,5 @@
 /*
  * Print Fahrenheit to Celsuis table
- * 2013-05-27
  */
 
 #include <stdio.h>
@@ -10,7 +9,7 @@
 #define	STEP	20	/* Step size of table */
 
 int
-main()
+main(void)
 {
 	int fahr;
 

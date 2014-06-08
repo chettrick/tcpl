@@ -1,12 +1,11 @@
 /*
  * Blank Replace
- * 2013-05-28
  */
 
 #include <stdio.h>
 
 int
-main()
+main(void)
 {
 	int ch, prevch;
 

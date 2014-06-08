@@ -1,6 +1,9 @@
 .OBJDIR= ${.CURDIR}/obj
 
-CFLAGS+= -g -Wall
+CFLAGS+= -g
+CFLAGS+= -Werror -Wextra -pedantic-errors -std=c99
+
+WARNINGS= yes
 
 PROGS= \
 	e01-01_hello \
@@ -27,6 +30,6 @@ PROGS= \
 all: $(PROGS)
 
 clean:
-	rm -f *.core ${PROGS}
+	rm -f ${PROGS}
 
 .include <bsd.prog.mk>

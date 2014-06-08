@@ -1,6 +1,5 @@
 /*
  * Print all input lines that are longer than 80 characters.
- * 2013-10-27
  */
 
 #include <stdio.h>
