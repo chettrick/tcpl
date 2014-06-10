@@ -17,13 +17,11 @@ main(void)
 			i = 0;
 		if (ch == '\t') {
 			putchar(' ');
-			while (i % TABSIZE) {
+			for (; i % TABSIZE; i++)
 				putchar(' ');
-				i++;
-			}
 		} else
 			putchar(ch);
 	}
 
-	return 0;
+	return (0);
 }
