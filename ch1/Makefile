@@ -26,7 +26,8 @@ PROGS= \
 	e01-18_rmblanks \
 	e01-19_reverse \
 	e01-20_detab \
-	e01-21_entab
+	e01-21_entab \
+	e01-22_foldline
 
 all: $(PROGS)
 
