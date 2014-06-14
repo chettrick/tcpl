@@ -1,19 +1,19 @@
 /*
- * Replace blanks with tabs and blanks that keep the same spacing.
+ * Replace blanks with tabs and blanks as to keep the same spacing.
  */
 
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINE	10000
-#define TABSIZE	8
+#define MAXLINE 10000
+#define TABSIZE 8
 
 size_t getaline(char *, size_t);
 void entab(char *, const char *);
 
 /*
- * Replace blanks with tabs and blanks that keep the same spacing.
- * Assume that the input file is free of tabs.
+ * Replace blanks with tabs and blanks as to keep the same spacing.
+ * Assume that the input file is free of tabs (run through detab).
  */
 int
 main(void)
@@ -54,27 +54,25 @@ getaline(char *s, size_t lim)
 void
 entab(char *cooked, const char *raw)
 {
-	char *dst = cooked;
+	int mark, n, tabcolumn, tflag;
+	const char *tok;
+	const char delim = ' ';
 	const char *src = raw;
-	size_t n, mark, tabcolumn;
-	char *tok;
-	int tflag;
+	char *dst = cooked;
 
-	n = 0;
+	n = tabcolumn = 0;
 
 	while (*src != '\0') {
 		/* Copy characters that are not blanks. */
-		while (*src != ' ' || *src != '\0') {
+		for (; *src != delim; n++)
 			*dst++ = *src++;
-			n++;
-		}
 
-		tok = (char *)src;
+		tok = src;	/* Save the location of the first blank. */
 		mark = n;
 		tflag = 0;
 		tabcolumn += TABSIZE;
 
-		while (*src++ == ' ') {
+		while (*src++ == delim) {
 			n++;
 			if (n % tabcolumn == 0) {
 				tflag = 1;
@@ -85,7 +83,7 @@ entab(char *cooked, const char *raw)
 			tflag = 0;
 			*dst++ = '\t';
 		} else {
-			src = tok;
+			src = tok;	/* Not enough blanks for a tab. */
 			while (mark++ != n)
 				*dst++ = *src++;
 		}
