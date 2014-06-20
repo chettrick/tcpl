@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINE 10000
-#define TABSIZE 8
+#define TABSIZ 8
 
 size_t getaline(char *, size_t);
 void entab(char *, const char *);
@@ -19,10 +18,10 @@ int
 main(void)
 {
 	int len;
-	char line[MAXLINE];	/* Current input line. */
-	char tabbed[MAXLINE];	/* Cooked string with tabs. */
+	char line[BUFSIZ];	/* Current input line. */
+	char tabbed[BUFSIZ];	/* Cooked string with tabs. */
 
-	while ((len = getaline(line, MAXLINE)) != -1) {
+	while ((len = getaline(line, BUFSIZ)) != -1) {
 		entab(tabbed, line);
 		printf("%s", tabbed);
 	}
@@ -54,13 +53,13 @@ getaline(char *s, size_t lim)
 void
 entab(char *cooked, const char *raw)
 {
-	int mark, n, tabcolumn, tflag;
+	int blanks, mark, n, tflag;
 	const char *tok;
 	const char delim = ' ';
 	const char *src = raw;
 	char *dst = cooked;
 
-	n = tabcolumn = 0;
+	n = blanks = 0;
 
 	while (*src != '\0') {
 		/* Copy characters that are not blanks. */
@@ -70,15 +69,16 @@ entab(char *cooked, const char *raw)
 		tok = src;	/* Save the location of the first blank. */
 		mark = n;
 		tflag = 0;
-		tabcolumn += TABSIZE;
 
 		while (*src++ == delim) {
 			n++;
-			if (n % tabcolumn == 0) {
+			blanks++;
+			if ((n % TABSIZ == 0) && (blanks > 1)) {
 				tflag = 1;
 				break;
 			}
 		}
+		blanks = 0;
 		if (tflag == 1) {
 			tflag = 0;
 			*dst++ = '\t';
