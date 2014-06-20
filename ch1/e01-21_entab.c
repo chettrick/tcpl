@@ -12,7 +12,6 @@ void entab(char *, const char *);
 
 /*
  * Replace blanks with tabs and blanks as to keep the same spacing.
- * Assume that the input file is free of tabs (run through detab).
  */
 int
 main(void)
@@ -51,15 +50,13 @@ getaline(char *s, size_t lim)
 
 /* entab:  replace blanks with tabs and blanks. */
 void
-entab(char *cooked, const char *raw)
+entab(char *dst, const char *src)
 {
 	int blanks, mark, n, tflag;
 	const char *tok;
-	const char delim = ' ';
-	const char *src = raw;
-	char *dst = cooked;
 
-	n = blanks = 0;
+	const char delim = ' ';
+	blanks = mark = n = tflag = 0;
 
 	while (*src != '\0') {
 		/* Copy characters that are not blanks. */
