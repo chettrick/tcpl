@@ -7,8 +7,8 @@
 
 #define TABSIZ 8
 
-size_t getaline(char *, size_t);
-void entab(char *, const char *);
+static size_t getaline(char *, size_t);
+static void entab(char *, const char *);
 
 /*
  * Replace blanks with tabs and blanks as to keep the same spacing.
@@ -29,7 +29,7 @@ main(void)
 }
 
 /* getaline:  read a line into `s'; return length, or -1 if EOF. */
-size_t
+static size_t
 getaline(char *s, size_t lim)
 {
 	int c;
@@ -37,7 +37,8 @@ getaline(char *s, size_t lim)
 
 	c = 0;
 
-	for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+	for (i = 0; ((c = getchar()) != EOF) && (i < lim - 1) &&
+	    (c != '\n'); ++i)
 		s[i] = c;
 	if (c == EOF)
 		return (-1);	/* POSIX */
@@ -49,7 +50,7 @@ getaline(char *s, size_t lim)
 }
 
 /* entab:  replace blanks with tabs and blanks. */
-void
+static void
 entab(char *dst, const char *src)
 {
 	int blanks, mark, n, tflag;
