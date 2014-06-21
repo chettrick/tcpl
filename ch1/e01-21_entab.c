@@ -7,7 +7,7 @@
 
 #define TABSIZ 8
 
-static size_t getaline(char *, size_t);
+static int getaline(char *, int);
 static void entab(char *, const char *);
 
 /*
@@ -29,16 +29,15 @@ main(void)
 }
 
 /* getaline:  read a line into `s'; return length, or -1 if EOF. */
-static size_t
-getaline(char *s, size_t lim)
+static int
+getaline(char *s, int lim)
 {
-	int c;
-	size_t i;
+	int c, i;
 
 	c = 0;
 
 	for (i = 0; ((c = getchar()) != EOF) && (i < lim - 1) &&
-	    (c != '\n'); ++i)
+	    (c != '\n'); i++)
 		s[i] = c;
 	if (c == EOF)
 		return (-1);	/* POSIX */
@@ -61,8 +60,10 @@ entab(char *dst, const char *src)
 
 	while (*src != '\0') {
 		/* Copy characters that are not blanks. */
-		for (; *src != delim; n++)
+		while (*src != delim) {
 			*dst++ = *src++;
+			n++;
+		}
 
 		tok = src;	/* Save the location of the first blank. */
 		mark = n;
