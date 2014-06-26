@@ -55,8 +55,8 @@ getaline(char *s, int lim)
  * The strrpbrkl() function locates in the NUL-terminated string s the
  * last occurrence of any character in the NUL-terminated string tok up
  * to len characters and returns a pointer to this character.  If len is
- * NUL then all of string s is searched.  If no characters in tok occur
- * anywhere in s within len characters, strrpbrkl() returns NULL.
+ * NUL then all of s is searched.  If no characters in tok occur anywhere
+ * in s within len characters, strrpbrkl() returns NULL.
  */
 static const char *
 strrpbrkl(const char *s, const char *tok, size_t len)
