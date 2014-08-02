@@ -7,7 +7,7 @@
 int
 main(void)
 {
-	float celsuis, fahr;
+	double celsuis, fahr;
 	int lower, upper, step;
 
 	lower = 0;	/* Lower limit of temperature table */

@@ -1,6 +1,8 @@
+#CC=clang
+
 CFLAGS+=	-g
 CFLAGS+=	-Werror -Wextra -pedantic-errors -std=c99
-CFLAGS+=	-Wmissing-declarations -Wcast-qual -Wbounded -Wformat
+CFLAGS+=	-Wmissing-declarations -Wcast-qual -Wformat
 CLEANFILES+=	${PROGS}
 
 WARNINGS=	yes
