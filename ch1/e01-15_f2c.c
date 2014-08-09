@@ -23,7 +23,7 @@ main(void)
 void
 tempconv(int lower, int upper, int step)
 {
-	float fahr, celsuis;
+	double fahr, celsuis;
 
 	printf("Fahr Celsuis\n");
 
