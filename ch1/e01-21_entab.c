@@ -37,11 +37,11 @@ getaline(char *s, int lim)
 
 	for (i = 0; ((c = getchar()) != EOF) && (i < lim - 1) &&
 	    (c != '\n'); i++)
-		s[i] = c;
+		s[i] = (char)c;
 	if (c == EOF)
 		return (-1);	/* POSIX */
 	if (c == '\n')
-		s[i++] = c;
+		s[i++] = (char)c;
 	s[i++] = '\0';
 
 	return (i);
