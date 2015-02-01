@@ -20,7 +20,8 @@ PROGS= \
 		e01-19_reverse \
 		e01-20_detab \
 		e01-21_entab \
-		e01-22_foldline
+		e01-22_foldline \
+		e01-23_decomm
 
 CFLAGS+=	-g
 CFLAGS+=	-Wall -Werror -Wextra -std=c99 -Wcast-qual -Wformat=2
