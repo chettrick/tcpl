@@ -18,7 +18,7 @@ main(void)
 {
 	int len, span;
 	char line[BUFSIZ];	/* Current input line. */
-	const char *tokens = " \t";
+	const char *tokens = " ";
 
 	while ((len = getaline(line, BUFSIZ)) != -1) {
 	 	span = strrcspnl(line, tokens, MAXCOL);
@@ -55,27 +55,31 @@ getaline(char *s, int lim)
  * The strrcspnl() function spans the NUL-terminated string s for the last
  * occurrence of any character in the NUL-terminated string tok up to len
  * characters and returns an index into the number of characters spanned.
- * If len is NUL then all of s is spanned.  If no characters in tok occur
- * anywhere in s within len characters, strrcspnl() returns an index into
- * the terminating NUL, or len, if specified.
+ * If no characters in tok occur anywhere in s within len characters,
+ * strrcspnl() returns an index into the shorter of len or the terminating NUL.
  */
 static size_t
 strrcspnl(const char *s, const char *tok, size_t len)
 {
+	int found = 0;
 	size_t i;
 	size_t ret = 0;
-	const char *ps = s;
+	const char *ps;
 	const char *ptok;
 
-	for (i = 1; ((i <= len) || (len == '\0')) &&
-	    (*ps != '\0'); i++, ps++) {
+	if (len == 0)
+		return (0);
+	for (i = 0, ps = s; (i < len) && (*ps != '\0'); i++, ps++) {
 		for (ptok = tok; *ptok != '\0'; ptok++) {
 			if (*ptok == *ps) {
-				ret = ps - s;
+				ret = ps - s + 1;
+				found = 1;
 				break;
 			}
 		}
 	}
-
-	return (ret);
+	if (found)
+		return (ret);
+	else
+		return (len > i ? i - 1 : i);
 }
