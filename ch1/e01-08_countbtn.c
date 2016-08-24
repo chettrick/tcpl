@@ -25,7 +25,7 @@ main(void)
 			default:
 				break;
 		}
-	
+
 	printf("Blanks\tTabs\tNewlines\n");
 	printf("%d\t%d\t%d\n", blanks, tabs, newlines);
 
