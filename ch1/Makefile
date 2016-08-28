@@ -1,3 +1,5 @@
+# Chapter 1: A Tutorial Introduction
+
 PROGS= \
 		e01-01_hello \
 		e01-03_f2c \
@@ -23,15 +25,5 @@ PROGS= \
 		e01-22_foldline \
 		e01-23_decomm
 
-CFLAGS+=	-g
-CFLAGS+=	-Wall -Werror -Wextra -std=c99 -Wcast-qual -Wformat=2
-CFLAGS+=	-Wmissing-declarations -pedantic-errors -Wstrict-prototypes
-CFLAGS+=	-Wpointer-arith -Wuninitialized -Wmissing-prototypes
-CFLAGS+=	-Wsign-compare -Wshadow -Wdeclaration-after-statement
-CFLAGS+=	-Wfloat-equal -Wcast-align -Wundef -Wstrict-aliasing=2
-
-CLEANFILES+=	${PROGS}
-
-all:		${PROGS}
-
+.include "../Makefile.inc"
 .include <bsd.prog.mk>
