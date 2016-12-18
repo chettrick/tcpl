@@ -1,38 +1,39 @@
 /*
- * Determine the ranges of basic variables in C.
+ * Determine the ranges of char, short, int, and long variables,
+ * both signed and unsigned, by printing appropriate values from
+ * standard headers and by direct computation.
+ *
+ * Not implemented: floating-point types
  */
 
 #include <limits.h>
 #include <stdio.h>
 
-/*
- * Determine the ranges of basic variables in C.
- */
 int
 main(void)
 {
-	printf("SCHAR_MAX:\t%d\n", SCHAR_MAX);
-	printf("SCHAR_MIN:\t%d\n", SCHAR_MIN);
-	printf("UCHAR_MAX:\t%d\n", UCHAR_MAX);
-	printf("UCHAR_MIN:\t%d\n", 0);
-	printf("CHAR_MAX:\t%d\n", CHAR_MAX);
-	printf("CHAR_MIN:\t%d\n", CHAR_MIN);
-	printf("USHRT_MAX:\t%d\n", USHRT_MAX);
-	printf("USHRT_MIN:\t%d\n", 0);
-	printf("SHRT_MAX:\t%d\n", SHRT_MAX);
-	printf("SHRT_MIN:\t%d\n", SHRT_MIN);
-	printf("UINT_MAX:\t%u\n", UINT_MAX);
-	printf("UINT_MIN:\t%u\n", 0U);
-	printf("INT_MAX:\t%d\n", INT_MAX);
-	printf("INT_MIN:\t%d\n", INT_MIN);
-	printf("ULONG_MAX:\t%lu\n", ULONG_MAX);
-	printf("ULONG_MIN:\t%ld\n", 0L);
-	printf("LONG_MAX:\t%ld\n", LONG_MAX);
-	printf("LONG_MIN:\t%ld\n", LONG_MIN);
-	printf("ULLONG_MAX:\t%llu\n", ULLONG_MAX);
-	printf("ULLONG_MIN:\t%llu\n", 0ULL);
-	printf("LLONG_MAX:\t%lld\n", LLONG_MAX);
-	printf("LLONG_MIN:\t%lld\n", LLONG_MIN);
+	printf("Datatype Range: From limit.h Header\n");
+	printf("Datatype:\tMinimum Value\t\t->\tMaximum Value\n");
+	printf("Signed char:\t%d\t\t\t->\t%d\n", SCHAR_MIN, SCHAR_MAX);
+	printf("Unsigned char:\t%d\t\t\t->\t%d\n", 0, UCHAR_MAX);
+	printf("Signed short:\t%d\t\t\t->\t%d\n", SHRT_MIN, SHRT_MAX);
+	printf("Unsigned short:\t%d\t\t\t->\t%d\n", 0, USHRT_MAX);
+	printf("Signed int:\t%d\t\t->\t%d\n", INT_MIN, INT_MAX);
+	printf("Unsigned int:\t%u\t\t\t->\t%u\n", 0, UINT_MAX);
+	printf("Signed long:\t%ld\t->\t%ld\n", LONG_MIN, LONG_MAX);
+	printf("Unsigned long:\t%d\t\t\t->\t%lu\n", 0, ULONG_MAX);
+	printf("\n");
+
+	printf("Datatype Range: Computed Values\n");
+	printf("Datatype:\tMinimum Value\t\t->\tMaximum Value\n");
+	printf("Signed char:\t%d\t\t\t->\t%d\n", -0x7f-1, 0x7f);
+	printf("Unsigned char:\t%d\t\t\t->\t%d\n", 0, 0xff);
+	printf("Signed short:\t%d\t\t\t->\t%d\n", -0x7fff-1, 0x7fff);
+	printf("Unsigned short:\t%d\t\t\t->\t%d\n", 0, 0xffff);
+	printf("Signed int:\t%d\t\t->\t%d\n", -0x7fffffff-1, 0x7fffffff);
+	printf("Unsigned int:\t%u\t\t\t->\t%u\n", 0, 0xffffffff);
+	printf("Signed long:\t%ld\t->\t%ld\n", LONG_MIN, LONG_MAX);
+	printf("Unsigned long:\t%d\t\t\t->\t%lu\n", 0, ULONG_MAX);
 
 	return (0);
 }
