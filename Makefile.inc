@@ -1,3 +1,5 @@
+NOMAN=
+
 CFLAGS+=	-g
 CFLAGS+=	-Wall -Werror -Wextra -std=c99 -Wcast-qual -Wformat=2
 CFLAGS+=	-Wmissing-declarations -pedantic -Wstrict-prototypes
